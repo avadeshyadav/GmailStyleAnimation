@@ -15,6 +15,7 @@
 		CB5D80BC1C9DAF6F0075F383 /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D80B71C9DAF6F0075F383 /* ProfileImageCell.swift */; };
 		CB5D80BD1C9DAF6F0075F383 /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D80B81C9DAF6F0075F383 /* ProfilViewController.swift */; };
 		CB5D80BE1C9DAF6F0075F383 /* UserDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D80B91C9DAF6F0075F383 /* UserDetailsCell.swift */; };
+		CB7D77ED1CAAECD0002F7452 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CB7D77EC1CAAECD0002F7452 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CB5D80B71C9DAF6F0075F383 /* ProfileImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
 		CB5D80B81C9DAF6F0075F383 /* ProfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
 		CB5D80B91C9DAF6F0075F383 /* UserDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsCell.swift; sourceTree = "<group>"; };
+		CB7D77EC1CAAECD0002F7452 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		CB24BEE61C9A51F300DBE861 /* AnimationSample */ = {
 			isa = PBXGroup;
 			children = (
+				CB7D77EC1CAAECD0002F7452 /* README.md */,
 				CB5D80B11C9DAF6F0075F383 /* AppDelegate */,
 				CB5D80B31C9DAF6F0075F383 /* UIClasses */,
 				CB24BEEB1C9A51F300DBE861 /* Main.storyboard */,
@@ -176,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB7D77ED1CAAECD0002F7452 /* README.md in Sources */,
 				CB5D80BA1C9DAF6F0075F383 /* AppDelegate.swift in Sources */,
 				CB5D80BD1C9DAF6F0075F383 /* ProfilViewController.swift in Sources */,
 				CB5D80BE1C9DAF6F0075F383 /* UserDetailsCell.swift in Sources */,

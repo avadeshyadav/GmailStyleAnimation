@@ -9,7 +9,6 @@
 let navigationBarOffset: CGFloat = 64
 let profileImageCellHeight: CGFloat = 380
 let numberOfCells: Int = 7
-
 let bgViewAlpha: CGFloat = 0.7
 
 import UIKit
