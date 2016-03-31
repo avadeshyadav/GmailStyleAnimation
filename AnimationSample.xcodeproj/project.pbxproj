@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB207F681CAD95A500252C98 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CB207F671CAD95A500252C98 /* README.md */; };
 		CB24BEED1C9A51F300DBE861 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB24BEEB1C9A51F300DBE861 /* Main.storyboard */; };
 		CB24BEEF1C9A51F300DBE861 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB24BEEE1C9A51F300DBE861 /* Assets.xcassets */; };
 		CB24BEF21C9A51F300DBE861 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB24BEF01C9A51F300DBE861 /* LaunchScreen.storyboard */; };
@@ -15,10 +16,10 @@
 		CB5D80BC1C9DAF6F0075F383 /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D80B71C9DAF6F0075F383 /* ProfileImageCell.swift */; };
 		CB5D80BD1C9DAF6F0075F383 /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D80B81C9DAF6F0075F383 /* ProfilViewController.swift */; };
 		CB5D80BE1C9DAF6F0075F383 /* UserDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D80B91C9DAF6F0075F383 /* UserDetailsCell.swift */; };
-		CB7D77ED1CAAECD0002F7452 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CB7D77EC1CAAECD0002F7452 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB207F671CAD95A500252C98 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CB24BEE41C9A51F300DBE861 /* AnimationSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimationSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB24BEEC1C9A51F300DBE861 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB24BEEE1C9A51F300DBE861 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -29,7 +30,6 @@
 		CB5D80B71C9DAF6F0075F383 /* ProfileImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
 		CB5D80B81C9DAF6F0075F383 /* ProfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
 		CB5D80B91C9DAF6F0075F383 /* UserDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsCell.swift; sourceTree = "<group>"; };
-		CB7D77EC1CAAECD0002F7452 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +46,7 @@
 		CB24BEDB1C9A51F300DBE861 = {
 			isa = PBXGroup;
 			children = (
+				CB207F671CAD95A500252C98 /* README.md */,
 				CB24BEE61C9A51F300DBE861 /* AnimationSample */,
 				CB24BEE51C9A51F300DBE861 /* Products */,
 			);
@@ -62,7 +63,6 @@
 		CB24BEE61C9A51F300DBE861 /* AnimationSample */ = {
 			isa = PBXGroup;
 			children = (
-				CB7D77EC1CAAECD0002F7452 /* README.md */,
 				CB5D80B11C9DAF6F0075F383 /* AppDelegate */,
 				CB5D80B31C9DAF6F0075F383 /* UIClasses */,
 				CB24BEEB1C9A51F300DBE861 /* Main.storyboard */,
@@ -179,7 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB7D77ED1CAAECD0002F7452 /* README.md in Sources */,
+				CB207F681CAD95A500252C98 /* README.md in Sources */,
 				CB5D80BA1C9DAF6F0075F383 /* AppDelegate.swift in Sources */,
 				CB5D80BD1C9DAF6F0075F383 /* ProfilViewController.swift in Sources */,
 				CB5D80BE1C9DAF6F0075F383 /* UserDetailsCell.swift in Sources */,
