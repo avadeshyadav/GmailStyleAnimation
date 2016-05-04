@@ -45,7 +45,6 @@ class ProfileImageCell : UICollectionViewCell {
         self.layoutIfNeeded()
         cellHeight =  self.contentView.frame.size.height
         
-        imageViewOriginalFrame = self.profileImageView.frame
         imageViewTransformedFrame = CGRectMake(20, 20, 40, 40)
         
         profileImageView.layer.cornerRadius = profileImageView.frame.size.height / 2
@@ -78,9 +77,8 @@ class ProfileImageCell : UICollectionViewCell {
     //MARK: Public Methods
     func getNavigationBarHeaderView() -> UIView {
     
-        let view = UIView(frame: CGRectMake(0,0, 300, 44))
-        
-         let imageView = UIImageView(frame: CGRectMake(10, 0, imageViewTransformedFrame.size.width, imageViewTransformedFrame.size.height))
+        let view = UIView(frame: CGRectMake(0,0, self.frame.size.width - 60, 44))
+         let imageView = UIImageView(frame: CGRectMake(view.frame.size.width * 0.053, 0, imageViewTransformedFrame.size.width, imageViewTransformedFrame.size.height))
         imageView.image = profileImageView.image
         
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
@@ -88,7 +86,7 @@ class ProfileImageCell : UICollectionViewCell {
         imageView.layer.borderColor = UIColor.whiteColor().CGColor
         imageView.layer.borderWidth = 1.5
         
-        var label = UILabel(frame: CGRectMake(imageView.frame.size.width + imageView.frame.origin.x + 10, 3, nameLabel.frame.size.width, nameLabel.frame.size.height))
+        var label = UILabel(frame: CGRectMake( (self.frame.size.width - nameLabel.frame.size.width) / 2 - 8, 3, nameLabel.frame.size.width, nameLabel.frame.size.height))
         label.text = nameLabel.text
         label.font = nameLabel.font
         label.textAlignment = nameLabel.textAlignment
@@ -96,7 +94,7 @@ class ProfileImageCell : UICollectionViewCell {
         
         view.addSubview(label)
         
-        label = UILabel(frame: CGRectMake(imageView.frame.size.width + imageView.frame.origin.x + 10, label.frame.origin.y + (detailsLabel.frame.origin.y - nameLabel.frame.origin.y), detailsLabel.frame.size.width, detailsLabel.frame.size.height))
+        label = UILabel(frame: CGRectMake((self.frame.size.width - nameLabel.frame.size.width) / 2 - 8, label.frame.origin.y + (detailsLabel.frame.origin.y - nameLabel.frame.origin.y), detailsLabel.frame.size.width, detailsLabel.frame.size.height))
         label.text = detailsLabel.text
         label.font = detailsLabel.font
         label.textAlignment = detailsLabel.textAlignment
@@ -113,6 +111,10 @@ class ProfileImageCell : UICollectionViewCell {
         
         var frame: CGRect = self.profileImageView.frame;
         var headerViewFrame: CGRect = self.headerBarView.frame
+        
+        if imageViewOriginalFrame == CGRectZero {
+            imageViewOriginalFrame = frame;
+        }
         
         if (offsetY > (imageViewOriginalFrame.origin.y - imageViewTransformedFrame.origin.y)) {
             
