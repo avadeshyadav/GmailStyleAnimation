@@ -21,12 +21,12 @@ class ViewController: UIViewController {
     }
 
 
-    @IBAction func actionViewProfile(sender: AnyObject) {
+    @IBAction func actionViewProfile(_ sender: AnyObject) {
      
-        let navVC = self.storyboard?.instantiateViewControllerWithIdentifier("NavigationVC")
-        navVC?.modalPresentationStyle = .Custom
+        let navVC = self.storyboard?.instantiateViewController(withIdentifier: "NavigationVC")
+        navVC?.modalPresentationStyle = .custom
 
-        self.presentViewController(navVC!, animated: true, completion: nil)
+        self.present(navVC!, animated: true, completion: nil)
     }
 }
 

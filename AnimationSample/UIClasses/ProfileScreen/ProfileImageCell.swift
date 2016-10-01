@@ -9,9 +9,9 @@
 import UIKit
 
 protocol ProfileImageCellDelegate {
-    func didPressedShareButtonOnCell(cell: ProfileImageCell)
-    func didTappedBackgroundOnCell(cell: ProfileImageCell)
-    func didTappedImageViewOnCell(cell: ProfileImageCell)
+    func didPressedShareButtonOnCell(_ cell: ProfileImageCell)
+    func didTappedBackgroundOnCell(_ cell: ProfileImageCell)
+    func didTappedImageViewOnCell(_ cell: ProfileImageCell)
 }
 
 class ProfileImageCell : UICollectionViewCell {
@@ -26,8 +26,8 @@ class ProfileImageCell : UICollectionViewCell {
     var delegate: ProfileImageCellDelegate?
     
     var cellHeight: CGFloat = 0
-    var imageViewOriginalFrame: CGRect = CGRectZero
-    var imageViewTransformedFrame: CGRect = CGRectZero
+    var imageViewOriginalFrame: CGRect = CGRect.zero
+    var imageViewTransformedFrame: CGRect = CGRect.zero
 
     
     override func awakeFromNib() {
@@ -45,19 +45,19 @@ class ProfileImageCell : UICollectionViewCell {
         self.layoutIfNeeded()
         cellHeight =  self.contentView.frame.size.height
         
-        imageViewTransformedFrame = CGRectMake(20, 20, 40, 40)
+        imageViewTransformedFrame = CGRect(x: 20, y: 20, width: 40, height: 40)
         
         profileImageView.layer.cornerRadius = profileImageView.frame.size.height / 2
         profileImageView.clipsToBounds = true
         
-        profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        profileImageView.layer.borderColor = UIColor.white.cgColor
         profileImageView.layer.borderWidth = 1.5
         
-        let tapGestureToDismiss = UITapGestureRecognizer(target: self, action: "tappedOnBackgroundView")
+        let tapGestureToDismiss = UITapGestureRecognizer(target: self, action: #selector(ProfileImageCell.tappedOnBackgroundView))
         bgTapToDismissView.addGestureRecognizer(tapGestureToDismiss)
         
-        let tapGestureOnImageView = UITapGestureRecognizer(target: self, action: "tappedOnUserProfileImageView")
-        profileImageView.userInteractionEnabled = true
+        let tapGestureOnImageView = UITapGestureRecognizer(target: self, action: #selector(ProfileImageCell.tappedOnUserProfileImageView))
+        profileImageView.isUserInteractionEnabled = true
         profileImageView.addGestureRecognizer(tapGestureOnImageView)
     }
     
@@ -70,23 +70,23 @@ class ProfileImageCell : UICollectionViewCell {
     }
     
     //MARK: IBAction Methods
-    @IBAction func actionShareButtonPressed(sender: AnyObject) {
+    @IBAction func actionShareButtonPressed(_ sender: AnyObject) {
         self.delegate?.didPressedShareButtonOnCell(self)
     }
     
     //MARK: Public Methods
     func getNavigationBarHeaderView() -> UIView {
     
-        let view = UIView(frame: CGRectMake(0,0, self.frame.size.width - 60, 44))
-         let imageView = UIImageView(frame: CGRectMake(view.frame.size.width * 0.053, 0, imageViewTransformedFrame.size.width, imageViewTransformedFrame.size.height))
+        let view = UIView(frame: CGRect(x: 0,y: 0, width: self.frame.size.width - 60, height: 44))
+         let imageView = UIImageView(frame: CGRect(x: view.frame.size.width * 0.053, y: 0, width: imageViewTransformedFrame.size.width, height: imageViewTransformedFrame.size.height))
         imageView.image = profileImageView.image
         
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
         imageView.clipsToBounds = true
-        imageView.layer.borderColor = UIColor.whiteColor().CGColor
+        imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 1.5
         
-        var label = UILabel(frame: CGRectMake( (self.frame.size.width - nameLabel.frame.size.width) / 2 - 8, 3, nameLabel.frame.size.width, nameLabel.frame.size.height))
+        var label = UILabel(frame: CGRect( x: (self.frame.size.width - nameLabel.frame.size.width) / 2 - 8, y: 3, width: nameLabel.frame.size.width, height: nameLabel.frame.size.height))
         label.text = nameLabel.text
         label.font = nameLabel.font
         label.textAlignment = nameLabel.textAlignment
@@ -94,7 +94,7 @@ class ProfileImageCell : UICollectionViewCell {
         
         view.addSubview(label)
         
-        label = UILabel(frame: CGRectMake((self.frame.size.width - nameLabel.frame.size.width) / 2 - 8, label.frame.origin.y + (detailsLabel.frame.origin.y - nameLabel.frame.origin.y), detailsLabel.frame.size.width, detailsLabel.frame.size.height))
+        label = UILabel(frame: CGRect(x: (self.frame.size.width - nameLabel.frame.size.width) / 2 - 8, y: label.frame.origin.y + (detailsLabel.frame.origin.y - nameLabel.frame.origin.y), width: detailsLabel.frame.size.width, height: detailsLabel.frame.size.height))
         label.text = detailsLabel.text
         label.font = detailsLabel.font
         label.textAlignment = detailsLabel.textAlignment
@@ -107,12 +107,12 @@ class ProfileImageCell : UICollectionViewCell {
         return view
     }
     
-    func doConfigurationForContentOffsetY(offsetY: CGFloat) {
+    func doConfigurationForContentOffsetY(_ offsetY: CGFloat) {
         
         var frame: CGRect = self.profileImageView.frame;
         var headerViewFrame: CGRect = self.headerBarView.frame
         
-        if imageViewOriginalFrame == CGRectZero {
+        if imageViewOriginalFrame == CGRect.zero {
             imageViewOriginalFrame = frame;
         }
         

@@ -18,28 +18,28 @@ class ProfilViewController: UIViewController, UIScrollViewDelegate, ProfileImage
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bgSemiTransparentView: UIView!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addSemiTransparentViewAnimationInBackGround()
         configureNavigationBar()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        bgSemiTransparentView.hidden = false
+        bgSemiTransparentView.isHidden = false
     }
     
     //MARK: Private Methods
     func configureNavigationBar() {
 
-        self.navigationController?.navigationBar.hidden = true
+        self.navigationController?.navigationBar.isHidden = true
 
         let image = UIImage(named: "ic_share_grey.png")
-        let imageView = UIImageView(frame: CGRectMake(0, 0, 36, 36))
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
         imageView.image = image
-        imageView.userInteractionEnabled = true
+        imageView.isUserInteractionEnabled = true
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: "shareButtonPressed")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProfilViewController.shareButtonPressed))
         imageView.addGestureRecognizer(tapGesture)
         
         let shareButton = UIBarButtonItem(customView: imageView)
@@ -48,10 +48,10 @@ class ProfilViewController: UIViewController, UIScrollViewDelegate, ProfileImage
     
     func shareButtonPressed() {
     
-        let alertController = UIAlertController(title: "Awesome", message: "You pressed share button", preferredStyle: .Alert)
-        let alertAction = UIAlertAction(title: "Enjoy", style: .Default, handler: nil)
+        let alertController = UIAlertController(title: "Awesome", message: "You pressed share button", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Enjoy", style: .default, handler: nil)
         alertController.addAction(alertAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // This is the additional view to show shadow animation in background while this view controller presentation is in progres, it will be removed automatically after completion of animation.
@@ -66,90 +66,90 @@ class ProfilViewController: UIViewController, UIScrollViewDelegate, ProfileImage
         let marginToStartView: CGFloat = 30
         bgSemiTransparentView.alpha = bgViewAlpha
         
-        let backgroundView =  UIView(frame: CGRectMake((superView!.frame.origin.x + marginToStartView), superView!.frame.origin.y + marginToStartView, superView!.frame.size.width - marginToStartView * 2, superView!.frame.size.height - marginToStartView * 2))
+        let backgroundView =  UIView(frame: CGRect(x: (superView!.frame.origin.x + marginToStartView), y: superView!.frame.origin.y + marginToStartView, width: superView!.frame.size.width - marginToStartView * 2, height: superView!.frame.size.height - marginToStartView * 2))
         
-        backgroundView.backgroundColor = UIColor.blackColor()
+        backgroundView.backgroundColor = UIColor.black
         backgroundView.alpha = 0.0
         
         superView?.addSubview(backgroundView)
         
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
+        UIView.animate(withDuration: 0.5, animations: { () -> Void in
             backgroundView.frame = superView!.frame
             backgroundView.alpha = bgViewAlpha
-            })
-            { (completed) -> Void in
+            }, completion: { (completed) -> Void in
                 backgroundView.removeFromSuperview()
-        }
+        })
+            
     
     }
     
     //MARK: Collection View DataSource & Delegate
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return numberOfCells;
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell
     {
         var cell: UICollectionViewCell;
         
-        if indexPath.row == 0 {
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier("ProfileImageCell", forIndexPath: indexPath) as! ProfileImageCell
+        if (indexPath as NSIndexPath).row == 0 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileImageCell", for: indexPath) as! ProfileImageCell
             (cell as! ProfileImageCell).delegate = self
             (cell as! ProfileImageCell).configureCellWithDetails()
         }
         else {
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier("UserDetailsCell", forIndexPath: indexPath) as! UserDetailsCell
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserDetailsCell", for: indexPath) as! UserDetailsCell
         }
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize
     {
         var height: CGFloat = profileImageCellHeight
         
-        if indexPath.row != 0 {
+        if (indexPath as NSIndexPath).row != 0 {
             height = 110
         }
         
-        return CGSizeMake(collectionView.frame.size.width, height)
+        return CGSize(width: collectionView.frame.size.width, height: height)
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
                 
         if (scrollView.contentOffset.y < -100) {// To dismiss view controller if user has swiped down
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
         
-        let indexPath = NSIndexPath(forItem: 0, inSection: 0)
-        let cell = self.collectionView.cellForItemAtIndexPath(indexPath) as? ProfileImageCell
+        let indexPath = IndexPath(item: 0, section: 0)
+        let cell = self.collectionView.cellForItem(at: indexPath) as? ProfileImageCell
         
         if cell != nil {
             //We just replace the current view with navigationbar if content has gone behind navigationbar offset and vice versa in else condition
             if ((scrollView.contentOffset.y + navigationBarOffset) > profileImageCellHeight) {
                 
-                self.navigationController?.navigationBar.hidden = false
+                self.navigationController?.navigationBar.isHidden = false
                 self.navigationItem.titleView = cell?.getNavigationBarHeaderView()
             }
             else {
                 cell?.doConfigurationForContentOffsetY(scrollView.contentOffset.y)
-                self.navigationController?.navigationBar.hidden = true
+                self.navigationController?.navigationBar.isHidden = true
             }
         }
     }
     
     //MARK: ProfileImageCell delegate methods
-    func didPressedShareButtonOnCell(cell: ProfileImageCell) {
+    func didPressedShareButtonOnCell(_ cell: ProfileImageCell) {
         self.shareButtonPressed()
     }
     
-    func didTappedBackgroundOnCell(cell: ProfileImageCell) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func didTappedBackgroundOnCell(_ cell: ProfileImageCell) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func didTappedImageViewOnCell(cell: ProfileImageCell) {
+    func didTappedImageViewOnCell(_ cell: ProfileImageCell) {
         print("Show profile picture")
     }
 }
